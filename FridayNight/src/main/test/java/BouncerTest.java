@@ -21,4 +21,10 @@ public class BouncerTest {
         Assert.assertTrue(bouncer.isCustomerOldEnoughToEnter(underAgeCustomer));
         Assert.assertTrue(bouncer.isCustomerOldEnoughToEnter(ofAgeCustomer));
     }
+    @Test
+    public void testBribePaymentAbility(){
+        Assert.assertTrue(bouncer.isCustomerOldEnoughToEnter(ofAgeCustomer));
+        Assert.assertTrue(bouncer.isCustomerOldEnoughToEnter(underAgeCustomer, 25));
+        Assert.assertFalse(bouncer.isCustomerOldEnoughToEnter(underAgeCustomer, 10));
+    }
 }

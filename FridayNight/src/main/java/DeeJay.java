@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DeeJay extends Staff{
@@ -32,14 +33,19 @@ public class DeeJay extends Staff{
 
 
     public String playASong(){
+        while (getAmountSongsANight() <= 7);{
+            Collections.shuffle(genres);
+            for(Genre g: genres) {
+                return "Playing new song! ";
 
-        //randomize the genres on your list(no need to junit this random part)
-        //Just make sure you add +1 to amountSongsEachNight
-        //You can't ever exceed 7 songs each night, otherwise it returns the
-        //underlying phrase
-        return "No more songs to play";
+            } setAmountSongsANight(amountSongsANight++);}
+            //randomize the genres on your list(no need to junit this random part)
+            //Just make sure you add +1 to amountSongsEachNight
+            //You can't ever exceed 7 songs each night, otherwise it returns the
+            //underlying phrase
+            return "No more songs to play";
+        }
 
-    }
 
     public void playARequest(Genre genre){
         //throws an exception if this genre is
