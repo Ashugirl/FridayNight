@@ -33,12 +33,15 @@ public class DeeJay extends Staff{
 
 
     public String playASong(){
-        while (getAmountSongsANight() <= 7);{
-            Collections.shuffle(genres);
-            for(Genre g: genres) {
-                return "Playing new song! ";
 
-            } setAmountSongsANight(amountSongsANight++);}
+            Collections.shuffle(genres);
+            if(getAmountSongsANight() < 7){
+                setAmountSongsANight(++amountSongsANight);
+            for(Genre g: genres) {
+                return "Playing new song! " + g;
+            }
+
+            }
             //randomize the genres on your list(no need to junit this random part)
             //Just make sure you add +1 to amountSongsEachNight
             //You can't ever exceed 7 songs each night, otherwise it returns the
@@ -51,9 +54,20 @@ public class DeeJay extends Staff{
         //throws an exception if this genre is
         //not in the genres of this Deejay
         //else, just play the genre and add one to the amountEachNight
+          if(!genres.contains(genre)){
+              throw new RuntimeException("DJ doesn't have that genre tonight.");
+
+          } else {
+              System.out.println("Playing your song");
+              setAmountSongsANight(++amountSongsANight);
+          }
+      }
+
+
+
     }
 
 
 
 
-}
+

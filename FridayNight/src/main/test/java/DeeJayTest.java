@@ -1,6 +1,7 @@
 //package java;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -21,14 +22,34 @@ public class DeeJayTest {
         djsList.add(Genre.POLKA);
         deeJay = new DeeJay("DJ", 0, djsList);
         eejay = new DeeJay("EJ", 7, djsList);
+
     }
     @Test
-    public void playASongTest(){
-       deeJay.playASong();
-        Assert.assertEquals(1, deeJay.getAmountSongsANight());
+    public void playASongTest() {
+
+        deeJay.playASong();
         eejay.playASong();
-        Assert.assertEquals(7, eejay.getAmountSongsANight());
+
+        for (Genre g : deeJay.getGenres()) {
+            String newSong = "Playing new song! " + g.toString();
+            String noNewSong = "No more songs to play";
+            Assert.assertEquals("Playing new song! " + g.toString(), newSong);
+            Assert.assertEquals(1, deeJay.getAmountSongsANight());
+            Assert.assertEquals("No more songs to play", noNewSong);
+            Assert.assertEquals(7, eejay.getAmountSongsANight());
+
+        }
+
     }
 
+    @Test
+    public void playARequestTest(){
+        deeJay.playARequest(Genre.DISCO);
+        String request = "Playing your song";
+        Assert.assertEquals("Playing your song", request);
+        Assert.assertThrows(RuntimeException.class, ()-> deeJay.playARequest(Genre.OPERA));
+
+
+    }
 
 }
